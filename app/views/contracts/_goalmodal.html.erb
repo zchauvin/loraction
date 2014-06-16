@@ -16,7 +16,7 @@
               <ul>
                 <% goal.report_fields.each do |field| %>
                   <li>
-                    <%= "#field.created_at.strftime('%B %e, %Y')}" %>
+                    <%= "#{field.created_at.strftime('%B %e, %Y')}" %>
                   </li>
                 <% end %>
               </ul>
