@@ -2,7 +2,7 @@ class ContractsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-    # UserMailer.welcome_email(User.first).deliver
+    UserMailer.welcome_email(User.first).deliver
     session[:accepted_tasks] = []
     session[:levels] = []
     session[:goals] = []
