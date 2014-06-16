@@ -1,0 +1,5 @@
+<h1 class='subhead'>How do you want to make a difference?</h1>
+
+<% @categories.each do |category| %>
+	<%= link_to category.name, "tasks/#{category.id}", class: 'category' %>
+<% end %>

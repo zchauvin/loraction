@@ -1,0 +1,33 @@
+<div id=<%= "goal#{index}" %> class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= "#{@contracts[index].task.name.capitalize} goal 
+            due #{@contracts[index].finish_date.strftime("%B %e, %Y")}" %></h4>
+      </div>
+      <div class="modal-body">
+        <p> 
+          You're doing your best to: 
+        </p>
+        <ol>
+          <% @contracts[index].goals.each do |goal| %>
+            <li>Reduce <%= goal.level.name.humanize.downcase %> from <%= goal.initial %> to <%= goal.target %> <%= goal.level.unit %>
+              <ul>
+                <% goal.report_fields.each do |field| %>
+                  <li>
+                    <%= "#field.created_at.strftime('%B %e, %Y')}" %>
+                  </li>
+                <% end %>
+              </ul>
+
+            </li>
+          <% end %>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Dismiss</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

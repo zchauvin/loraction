@@ -1,0 +1,12 @@
+<h1 class='subhead'>An inspired choice! Now select all the tasks that you want to challenge yourself in: </h1>
+
+<%= form_tag "/contracts/new/#{params[:cat_id]}", method: 'get' do %>
+	<% @tasks.each do |task| %>
+		<%= label_tag task.name %>
+		<%= check_box_tag task.name %>
+		<br>
+	<% end %>
+	<%= submit_tag 'Go!', class: 'btn btn-success' %>
+<% end %>
+
+

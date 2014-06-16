@@ -1,0 +1,15 @@
+<!-- STEP 3 -->
+
+<div>
+	<h2>Set a Benchmark</h2>
+	<% @chosen_tasks.each do |task| %>
+		<% task.levels.each do |level| %>
+			<div class='form-field'>
+				<div><%= label_tag "#{level.name} (#{level.unit})" %></div>
+				<%= number_field_tag level.name %>	
+			</div>
+		<% end %>
+	<% end %>
+	<%= submit_tag 'Next', class: 'btn btn-success' %>
+
+</div>

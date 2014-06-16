@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finish_date: 2014-06-10 13:34:06
+  timescale: 1
+  reduction_goal: 1
+
+two:
+  finish_date: 2014-06-10 13:34:06
+  timescale: 1
+  reduction_goal: 1

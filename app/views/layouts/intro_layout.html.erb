@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vladimir</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='intro_body'>
+
+<br>
+<br>
+<div class="container">
+	
+	
+	
+	<% if flash[:notice] %>
+    	<div class="alert alert-success"><%= flash[:notice] %></div>
+  	<% end %>
+  	<% if flash[:alert] %>
+    	<div class="alert alert-danger"><%= flash[:alert] %></div>
+  	<% end %>
+	<%= yield %>
+	
+</div>
+
+<!-- <div class="footer">
+	"Unless some one like you cares a whole awful lot, <br>
+	Nothing is going to get better. It's not." -The Lorax
+</div>
+ -->
+</body>
+</html>

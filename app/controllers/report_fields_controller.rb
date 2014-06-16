@@ -1,0 +1,2 @@
+class ReportFieldsController < ApplicationController
+end

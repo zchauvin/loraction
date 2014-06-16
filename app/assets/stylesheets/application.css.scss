@@ -1,0 +1,116 @@
+
+ @import "bootstrap";
+ @import "bootstrap_override";	
+
+$intro_font_color: rgb(255, 255, 111);
+
+.intro_body {
+	background-image: url('loraxbg.jpg');
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+
+body {
+	margin-top: 20px;
+	background-color: #41beff;	
+	color: #FAE8E4;
+	font: georgia;
+}
+
+.intro_row {
+	text-align: center;
+}
+
+.get_started {
+	color: $intro_font_color;
+	background-color: #41beff;
+}
+
+.circle {
+	border-radius: 50%; 
+	height: 140px;
+	width: 140px;
+	background-color: rgba(73, 177, 231, 0.8);
+	margin: 0px auto;
+	display: table;
+}
+
+.descrip {
+	/*#E88E0C*/
+	background-color: rgba(73, 177, 231, 0.8);
+	border-radius: 10px;
+	color: $intro_font_color;
+	padding: 10px;
+	width: 80%;
+	margin: 20px auto;
+}
+
+.content {
+	vertical-align: middle;
+	display: table-cell;
+	font-size: 30px;
+	color: $intro_font_color;
+}
+
+.lorax {
+	position: fixed;
+	bottom: 0px;
+	right: -110px;
+}
+
+.footer {
+	position: fixed;
+	bottom: 10px;
+	right: 200px;
+	font-size: 16px;
+}
+
+a {
+	color: #FAE8E4;
+}
+
+input {
+	color: black;
+}
+
+select {
+	color: black;
+}
+
+.subhead {
+	text-align: center;
+}
+
+.header {
+	background-color: rgb(51,51,51);
+}
+
+.form-field {
+	margin-bottom: 20px;
+}
+
+.greeting {
+	margin: 20px 20px 0px 0px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.popup {
+	border-radius: 10px;
+	opacity: 0.8;
+	padding: 20px;
+	font-weight: bold;
+}
+
+.notice {
+	background-color: #a1ffa2;
+	color: #057700;
+	border: thin solid #057700;
+}
+
+/*.alert {
+	background-color: #fc9b19;
+	color: black;
+	border: thin solid #784218;
+}*/

@@ -1,0 +1,18 @@
+
+
+<% if session[:step] == 1 %>
+	<%= render partial: "form", locals: { part: 'categories' } %>
+<% elsif session[:step] == 2 %>
+	<%= render partial: "form", locals: { part: 'tasks' } %>
+<% elsif session[:step] == 3 %>
+	<%= render partial: "form", locals: { part: 'benchmark' } %>
+<% elsif session[:step] == 4 %>
+	<%= render partial: "form", locals: { part: 'goals' } %>
+<% elsif session[:step] == 5 %>
+	<%= render partial: "form", locals: { part: 'timeline' } %>
+<% end %>
+
+
+
+
+
