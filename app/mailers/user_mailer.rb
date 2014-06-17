@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
 
   def report_email(user, contract)
   	@user = user
-  	@url = 'http://agile-savannah-3773.herokuapp.com/'
+  	@url = 'http://agile-savannah-3773.herokuapp.com/report'
   	@contract = contract
   	mail(to: @user.email, subject: 'Report ')
   end

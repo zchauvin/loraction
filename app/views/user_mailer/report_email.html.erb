@@ -6,10 +6,13 @@
   <body>
     <h1>Hey <%= @user.first_name %>, </h1>
     <p>
+      This url is <%= @url %>
+    </p>
+    <p>
       The team at Loraction is rooting for you as you work to reduce your
        <%= @contract.level.task.category.name %> usage! 
     </p>
-      <form action=<%= @url + "report"%>, method: 'post' >
+      <form action= <%= @url %> , method: 'post' >
         <label for=<%= @contract.level.name %>>
           <%= @contract.level.name %>
         </label>
