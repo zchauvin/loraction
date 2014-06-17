@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hey <%= @user.first_name %>, </h1>
+    <p>
+      The team at Loraction is rooting for you as you work to reduce your
+       <%= @contract.level.task.category %> usage! 
+    </p>
+      <form action=<%= @url + "/report", method: 'post' %>>
+        <label for=<%= @contract.level.name %>>
+          <%= @contract.level.name %>
+        </label>
+        <input type="number" name=<%= @contract.level.name %>>
+      </form>
+    <p> 
+      
+    </p>
+    <p style="text-align:right;">Sincerely,<br>The Loraction Team  </p>
+  </body>
+</html>

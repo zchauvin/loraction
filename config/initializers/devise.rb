@@ -10,12 +10,12 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  credentials = YAML.load_file("#{Rails.root}/config/credentials.yml")
-  ENV['FACEBOOK_CONSUMER_KEY'] = credentials['facebook_key']
-  ENV['FACEBOOK_CONSUMER_SECRET'] = credentials['facebook_secret']
-  ENV['GMAIL_USERNAME'] = credentials['gmail_username']
-  ENV['GMAIL_PASSWORD'] = credentials['gmail_password']
-
+  # credentials = YAML.load_file("#{Rails.root}/config/credentials.yml")
+  # ENV['FACEBOOK_CONSUMER_KEY'] = credentials['facebook_key']
+  # ENV['FACEBOOK_CONSUMER_SECRET'] = credentials['facebook_secret']
+  # ENV['GMAIL_USERNAME'] = credentials['gmail_username']
+  # ENV['GMAIL_PASSWORD'] = credentials['gmail_password']
+  
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.

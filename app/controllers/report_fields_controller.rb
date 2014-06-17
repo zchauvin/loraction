@@ -1,2 +1,0 @@
-class ReportFieldsController < ApplicationController
-end

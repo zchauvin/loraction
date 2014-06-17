@@ -32,7 +32,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :first_name
       t.string :last_name
-      t.integer :progress, default: 0
 
       t.timestamps
     end

@@ -3,8 +3,9 @@
 <h1 class='subhead'>An inspired choice! Now select all the tasks that you want to challenge yourself in: </h1>
 
 <% @tasks.each do |task| %>
-	<%= label_tag "#{task.name} (#{task.timescale})" %>
-	<%= check_box_tag "#{task.name}_#{task.timescale}".to_sym %>
+	<%= label_tag task.name %>
+	<%= radio_button_tag 'task', task.id %>
 	<br>
+
 <% end %>
 <%= submit_tag 'Next', class: 'btn btn-success' %>

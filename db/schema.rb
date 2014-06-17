@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20140614200207) do
 
   create_table "contracts", force: true do |t|
     t.date     "finish_date"
+    t.integer  "initial"
+    t.integer  "target"
     t.integer  "user_id"
-    t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140614200207) do
     t.string   "name"
     t.string   "unit"
     t.integer  "task_id"
+    t.integer  "contract_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140614200207) do
 
   create_table "reports", force: true do |t|
     t.integer  "contract_id"
+    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,14 +69,13 @@ ActiveRecord::Schema.define(version: 20140614200207) do
     t.string   "name"
     t.text     "description"
     t.integer  "category_id"
-    t.string   "timescale"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tips", force: true do |t|
     t.text     "description"
-    t.integer  "task_id"
+    t.integer  "level_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,7 +93,6 @@ ActiveRecord::Schema.define(version: 20140614200207) do
     t.string   "last_sign_in_ip"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "progress",               default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"

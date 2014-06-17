@@ -1,3 +1,3 @@
 class Tip < ActiveRecord::Base
-	belongs_to :task
+	belongs_to :level
 end

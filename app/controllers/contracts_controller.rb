@@ -2,10 +2,7 @@ class ContractsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-    UserMailer.welcome_email(User.first).deliver
-    session[:accepted_tasks] = []
-    session[:levels] = []
-    session[:goals] = []
+    # UserMailer.welcome_email(User.first).deliver
     session[:step] = 0
     if !user_signed_in?
       render 'intro/index.html.erb', layout: "intro_layout"
@@ -29,55 +26,51 @@ class ContractsController < ApplicationController
       @categories = Category.all
       session[:step] = 1
     elsif session[:step] == 1
+
       @tasks = Category.find(params[:category]).tasks
-      session[:category] = params[:category]
       session[:step] = 2
+
     elsif session[:step] == 2
-      @tasks = Category.find(session[:category]).tasks
-      @chosen_tasks = []
-      @tasks.each do |task|
-        if params.has_key?("#{task.name}_#{task.timescale}".to_sym)
-          session[:accepted_tasks] << task.id 
-          @chosen_tasks << task 
-        end 
-      end
+      
+      task = Task.find(params[:task])
+      @levels = task.levels  
       session[:step] = 3
 
     elsif session[:step] == 3
-      
-      @chosen_tasks = []
-      session[:accepted_tasks].each do |task_id|
-        task = Task.find(task_id)
-        task.levels.each do |level|
-          session[:levels] << params[level.name]
-        end
-        @chosen_tasks << task 
-      end
+
+      @level = Level.find(params[:level])
+      session[:level] = params[:level]
       session[:step] = 4
       
     elsif session[:step] == 4
-      session[:step] = 5
-      session[:accepted_tasks].each do |task_id|
-        task = Task.find(task_id)
-        task.levels.each do |level|
-          session[:goals] << params[level.name]
-        end
-      end
+      
+      @level = Level.find(session[:level])
+      session[:initial] = params[@level.name]
       session[:step] = 5
 
+    elsif session[:step] == 5
+
+      @level = Level.find(session[:level])
+      session[:target] = params[@level.name]
+      session[:step] = 6
+
     else 
-      @contracts = Contract.init(params[:finish_date], session[:accepted_tasks], session[:levels], session[:goals], current_user.id)
-      @tips = []
-      @contracts.each do |contract| 
-        contract.task.tips.each do |tip|
-          @tips << tip.description
-        end
+      @contract = Contract.new(
+        finish_date: params[:finish_date], 
+        initial: session[:initial],
+        target: session[:target],
+        user_id: current_user.id
+      )
+      @level = Level.find(session[:level])
+      @contract.level = @level
+      @tips = @level.tips
+      if @contract.save 
+        flash[:notice] = "Contract created successfully!"
+      else 
+        flash[:error] = @contract.errors.full_messages.join(" | ")
       end
-      # if @contract.save 
-      #   flash[:notice] = "Contract created successfully!"
-      # else 
-      #   flash[:error] = @contract.errors.full_messages.join(" | ")
-      # end
+      logger.debug "HELLO"
+      logger.debug @contract.inspect
       render 'create'
     end
   end

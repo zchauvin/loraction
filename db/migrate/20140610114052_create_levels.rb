@@ -4,6 +4,7 @@ class CreateLevels < ActiveRecord::Migration
       t.string :name
       t.string :unit
       t.integer :task_id
+      t.integer :contract_id
 
       t.timestamps
     end

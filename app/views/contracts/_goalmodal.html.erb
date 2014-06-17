@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><%= "#{@contracts[index].task.name.capitalize} goal 
+        <h4 class="modal-title"><%= "#{@contracts[index].level.task.name.capitalize} goal 
             due #{@contracts[index].finish_date.strftime("%B %e, %Y")}" %></h4>
       </div>
       <div class="modal-body">
@@ -11,14 +11,12 @@
           You're doing your best to: 
         </p>
         <ol>
-          <% @contracts[index].goals.each do |goal| %>
-            <li>Reduce <%= goal.level.name.humanize.downcase %> from <%= goal.initial %> to <%= goal.target %> <%= goal.level.unit %>
+            <li>Reduce <%= @contracts[index].level.name.humanize.downcase %> from <%= @contracts[index].initial %> to <%= @contracts[index].target %> <%= @contracts[index].level.unit %>
               <ul>
-                <% goal.report_fields.each do |field| %>
+                <% @contracts[index].reports.each do |report| %>
                   <li>
-                    <%= "#{field.created_at.strftime('%B %e, %Y')}" %>
+                    <%= "#{report.created_at.strftime('%B %e, %Y')}" %>
                   </li>
-                <% end %>
               </ul>
 
             </li>

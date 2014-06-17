@@ -4,7 +4,6 @@ class CreateTasks < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :category_id
-      t.string :timescale
 
       t.timestamps
     end

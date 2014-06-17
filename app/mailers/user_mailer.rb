@@ -5,4 +5,8 @@ class UserMailer < ActionMailer::Base
     @url  = 'http://example.com/login'
     mail(to: 'zchauvin@college.harvard.edu', subject: 'Welcome to My Awesome Site')
   end
+
+  def report_email(user)
+  	
+  end
 end

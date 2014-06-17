@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Category</th>
-      <th>Task</th>
+      <th>Level</th>
       <th>Start Date</th>
       <th>Finish Date</th>
       <th></th>
@@ -14,8 +14,8 @@
   <tbody>
     <% @contracts.each_with_index do |contract, index| %>
       <tr>    
-        <td><%= contract.task.category.name %></td>
-        <td><%= contract.task.name.capitalize %></td>
+        <td><%= contract.level.task.category.name %></td>
+        <td><%= contract.level.name.humanize %></td>
         <td><%= contract.created_at.strftime("%B %e, %Y")%></td>    
         <td><%= contract.finish_date.strftime("%B %e, %Y")%></td>
         <td>
@@ -34,6 +34,5 @@
 <%= link_to 'Make a New Contract!', new_contract_path, class: 'btn btn-success' %>
   <% @contracts.each_with_index do |contract, index| %>
     <%= render partial: "goalmodal", locals: { index: index } %>    
-    <%= render partial: "reportmodal", locals: { index: index } %>    
   <% end %>
 

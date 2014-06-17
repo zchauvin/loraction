@@ -1,4 +1,5 @@
 class Level < ActiveRecord::Base
 	belongs_to :task
-	has_many :goals
+	belongs_to :contract
+	has_many :tips
 end
