@@ -88,6 +88,18 @@ class ContractsController < ApplicationController
     render 'index'
   end
 
+  def destroy
+    @contract = Contract.find(params[:id])
+    if @contract.destroy 
+      flash[:notice] = "Contract deleted successfully!"
+    else 
+      flash[:error] = @contract.errors.full_messages.join(" | ")
+    end
+
+    redirect_to root_path
+  end 
+
+
   def create
   end
 

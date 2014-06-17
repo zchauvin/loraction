@@ -3,14 +3,13 @@ Rails.application.routes.draw do
 
   get 'categories' => 'categories#index'
   get 'intro' => 'intro#index', as: 'intro' 
-
-  get 'tasks/:cat_id' => 'tasks#index' 
   
 
   get 'contracts/new' => 'contracts#new', as: 'new_contract'
   get 'contracts' => 'contracts#create'
   post '/' => 'contracts#report'
   get 'reports' => 'reports#create'
+  delete 'contracts/:id' => 'contracts#destroy'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   
