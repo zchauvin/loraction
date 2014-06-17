@@ -1,0 +1,30 @@
+<div id=<%= "report#{index}" %> class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= "Report for #{@contracts[index].task.name.capitalize} Task
+            due #{@contracts[index].finish_date.strftime("%B %e, %Y")}" %></h4>
+      </div>
+      <%= form_tag root_path, method: 'post' do %>
+        <div class="modal-body">
+            <% @contracts[index].goals.each do |goal| %>
+              <div class='form-field'>                
+                <%= label_tag "What did you reduce your #{goal.level.name.humanize.downcase} 
+               to? (#{goal.level.unit})" %>
+                <%= number_field_tag goal.level.name %>  
+              </div>
+             
+            <% end %>
+        
+        
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name='contract_id' value=<%= @contracts[index].id %>>
+
+          <input type="submit" class="btn btn-info" value="Submit Report"></button>
+        </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'contracts/new' => 'contracts#new', as: 'new_contract'
   get 'contracts' => 'contracts#create'
   post '/' => 'contracts#report'
-  post 'reports' => 'reports#create'
+  get 'reports' => 'reports#create'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   

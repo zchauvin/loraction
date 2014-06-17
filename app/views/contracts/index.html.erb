@@ -21,10 +21,10 @@
         
         <td>
         	<a class="btn btn-primary" data-toggle="modal" data-target=<%= "#goal#{index}" %>>
-			    	Show Goals
+			    	Show Goal
 			    </a>
           <a class="btn btn-primary" data-toggle="modal" data-target=<%= "#report#{index}" %>>
-            Report Progress
+            Show Progress
           </a>
         </td>
       </tr>
@@ -34,6 +34,7 @@
 
 <%= link_to 'Make a New Contract!', new_contract_path, class: 'btn btn-success' %>
   <% @contracts.each_with_index do |contract, index| %>
+    <%= render partial: "goalmodal", locals: { index: index } %>    
     <%= render partial: "goalmodal", locals: { index: index } %>    
   <% end %>
 

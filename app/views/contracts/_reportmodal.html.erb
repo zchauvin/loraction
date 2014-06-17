@@ -6,25 +6,26 @@
         <h4 class="modal-title"><%= "Report for #{@contracts[index].task.name.capitalize} Task
             due #{@contracts[index].finish_date.strftime("%B %e, %Y")}" %></h4>
       </div>
-      <%= form_tag root_path, method: 'post' do %>
-        <div class="modal-body">
-            <% @contracts[index].goals.each do |goal| %>
-              <div class='form-field'>                
-                <%= label_tag "What did you reduce your #{goal.level.name.humanize.downcase} 
-               to? (#{goal.level.unit})" %>
-                <%= number_field_tag goal.level.name %>  
-              </div>
-             
-            <% end %>
-        
-        
-        </div>
-        <div class="modal-footer">
-          <input type="hidden" name='contract_id' value=<%= @contracts[index].id %>>
+      <div class="modal-body">
+        <p> 
+          You're doing your best to: 
+        </p>
+        <ol>
+            <li>Reduce <%= @contracts[index].level.name.humanize.downcase %> from <%= @contracts[index].initial %> to <%= @contracts[index].target %> <%= @contracts[index].level.unit %>
+              <ul>
+                <% @contracts[index].reports.each do |report| %>
+                  <li>
+                    <%= "#{report.created_at.strftime('%B %e, %Y')}" %>
+                  </li>
+              </ul>
 
-          <input type="submit" class="btn btn-info" value="Submit Report"></button>
-        </div>
-      <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Dismiss</button>  
+      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>

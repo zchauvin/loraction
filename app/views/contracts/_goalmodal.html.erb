@@ -15,7 +15,7 @@
               <ul>
                 <% @contracts[index].reports.each do |report| %>
                   <li>
-                    <%= "#{report.created_at.strftime('%B %e, %Y')}" %>
+                    <%= "Reported #{report.value} on #{report.created_at.strftime('%B %e, %Y')}" %>
                   </li>
               </ul>
 
