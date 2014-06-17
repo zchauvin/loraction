@@ -5,6 +5,7 @@ class CreateContracts < ActiveRecord::Migration
       t.integer :initial
       t.integer :target
       t.integer :user_id
+      t.integer :level_id
 
       t.timestamps
     end

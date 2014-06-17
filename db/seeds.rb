@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Category.destroy_all
+Task.destroy_all
+Level.destroy_all
 
 water = Category.create(
 	name: 'Water', 

@@ -13,11 +13,14 @@
 
   <tbody>
     <% @contracts.each_with_index do |contract, index| %>
-      <tr>    
+      <tr>   
+        <%= logger.debug "START#{contract.id}"%> 
         <td><%= contract.level.task.category.name %></td>
         <td><%= contract.level.name.humanize %></td>
         <td><%= contract.created_at.strftime("%B %e, %Y")%></td>    
         <td><%= contract.finish_date.strftime("%B %e, %Y")%></td>
+        <%= logger.debug "FINISH#{contract.id}"%> 
+        
         <td>
         	<a class="btn btn-primary" data-toggle="modal" data-target=<%= "#goal#{index}" %>>
 			    	Show Goals
