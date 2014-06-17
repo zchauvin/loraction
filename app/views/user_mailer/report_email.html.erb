@@ -13,7 +13,8 @@
         <label for=<%= @contract.level.name %>>
           <%= @contract.level.name %>
         </label>
-        <input type="number" name=<%= @contract.level.name %>>
+        <input type="hidden" name='contract' value=<%= @contract.id %>>
+        <input type="number" name='value'>
       </form>
     <p> 
       
