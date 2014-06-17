@@ -69,7 +69,7 @@ class ContractsController < ApplicationController
       else 
         flash[:error] = @contract.errors.full_messages.join(" | ")
       end
-      UserMailer.report_email(@contract).deliver
+      UserMailer.report_email(current_user, @contract).deliver
       render 'create'
     end
   end

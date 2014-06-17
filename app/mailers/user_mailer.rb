@@ -6,8 +6,8 @@ class UserMailer < ActionMailer::Base
     mail(to: 'zchauvin@college.harvard.edu', subject: 'Welcome to My Awesome Site')
   end
 
-  def report_email(contract)
-  	@user = current_user
+  def report_email(user, contract)
+  	@user = user
   	@url = 'http://agile-savannah-3773.herokuapp.com/'
   	@contract = contract
   	mail(to: @user.email, subject: 'Report ')

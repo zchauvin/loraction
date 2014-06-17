@@ -7,14 +7,15 @@
     <h1>Hey <%= @user.first_name %>, </h1>
     <p>
       The team at Loraction is rooting for you as you work to reduce your
-       <%= @contract.level.task.category %> usage! 
+       <%= @contract.level.task.category.name %> usage! 
     </p>
-      <form action=<%= @url + "/report", method: 'post' %>>
+      <form action=<%= @url + "report"%>, method: 'post' >
         <label for=<%= @contract.level.name %>>
           <%= @contract.level.name %>
         </label>
         <input type="hidden" name='contract' value=<%= @contract.id %>>
         <input type="number" name='value'>
+        <input type="submit" value="Submit">
       </form>
     <p> 
       
