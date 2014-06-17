@@ -59,7 +59,8 @@ class ContractsController < ApplicationController
         finish_date: params[:finish_date], 
         initial: session[:initial],
         target: session[:target],
-        user_id: current_user.id
+        user_id: current_user.id,
+        level_id: session[:level]
       )
       @level = Level.find(session[:level])
       @contract.level = @level
