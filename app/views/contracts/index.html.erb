@@ -1,7 +1,7 @@
 <h1>Your Contracts</h1>
 
 <% @contracts.each_with_index do |contract, index| %>
-  <div class='bubble center narrow'>
+  <div class='bubble center'>
     <div class='relative'>
         <%= link_to image_tag('delete.png'), "/contracts/#{contract.id}", class: 'topright' , method: 'delete', data: { confirm: 'Are you sure?'} %>
     </div>
