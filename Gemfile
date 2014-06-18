@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'whenever', require: false
 gem 'highcharts-rails'
 gem 'rufus-scheduler'
 gem 'groupdate'

@@ -40,6 +40,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.send_emails 
+    all.each do |user| 
+      user.contracts.each do |contract|
+        if (Date.today - contract.created_at.to_date).to_i % Level.time_to_int(contract.level.timescale) == 0
+          UserMailer.report_email(user, contract).deliver
+        end  
+      end
+    end
+  end
+
 
   
 end

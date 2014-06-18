@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
   	@url = 'http://agile-savannah-3773.herokuapp.com/reports'
   	@contract = contract
   	mail(to: @user.email, 
-  		 subject: "Report for #{@contract.level.task.category.name.humanize.downcase}", 
+  		 subject: "Report for #{@contract.level.task.name} #{@contract.level.name} on #{Date.today.strftime("%B %e, %Y")}", 
   		 from: "info@loraction.com")
   end
 end

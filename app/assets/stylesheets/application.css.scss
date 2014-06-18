@@ -9,10 +9,14 @@ $lighter_background: #59C2FF;
 $font_color: #eee;
 
 .intro_body {
-	background-image: url('loraxbg.jpg');
+	background-image: url('loraxbg.jpg');	
 	width: 100%;
 	height: 100%;
 	background-size: cover;
+}
+
+.eighty {
+	width: 80%;
 }
 
 .bottomright {

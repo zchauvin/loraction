@@ -65,7 +65,7 @@ laundry = Task.create(
 
 s_freq = Level.create(
 	name: 'frequency',
-	unit: 'average times per week',
+	unit: 'times per week',
 	timescale: 'week', 
 	task_id: shower.id)
 
