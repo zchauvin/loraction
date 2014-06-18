@@ -1,11 +1,17 @@
 <!-- STEP 1 -->
 
-<h1 class='subhead'>How do you want to make a difference?</h1>
-
-<% @categories.each do |category| %>
-	<%= label_tag category.name %>
-	<%= radio_button_tag 'category', category.id, class: 'category' %>
-	<br>
-<% end %>
-<%= submit_tag "Let's Get Started", class: 'btn btn-success' %>
-
+<div class='blockcont'>
+	<h1 class='subhead'>How do you want to make a difference?</h1>
+	
+	<% @categories.each do |category| %>
+			
+	<div class=<%= @column %>>
+		<div id=<%= category.id %> class="block">
+			<p class='blocktext'><%= category.name.humanize %></p>
+			<%= image_tag "#{category.name}.png" %>
+			<input type="hidden" name='category' value=''>
+		</div>
+	</div>
+		
+	<% end %>
+</div>

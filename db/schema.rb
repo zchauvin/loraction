@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140614200207) do
     t.string   "name"
     t.string   "unit"
     t.integer  "task_id"
+    t.string   "timescale"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

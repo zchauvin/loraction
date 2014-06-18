@@ -12,10 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
 
 $(function() {
-	
+	$('.block').click(function() {
+		$('input').val(this.id);
+		//$('form').submit();
+		$('.blockcont').fadeOut();
+		$('.blockcont').html();
+		$('.blockcont').fadeIn();
+
+		// $('.blockcont').html("You clicked on a checkbox.").fadeIn('slow');
+	});
+
+	$('form').on('submit', function() {
+		console.log('FORM SUBMITTED');
+	});
 });
+

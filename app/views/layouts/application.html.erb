@@ -21,10 +21,10 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-             <li><a href="#">New</a></li>
-             <li class='active'><a href="#">Contracts</a></li>
+             <li> <%= link_to 'Contracts', root_path %></li>
              <li><a href="#">News Feed</a></li>
              <li><a href="#"><%= current_user.first_name %></a></li>
+             <li> <%= link_to 'New Contract', '/contracts/new' %></li>
              <li> <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -45,14 +45,11 @@
   	<% end %>
 	
         <%= yield %>
-
-
-
-	
 </div>
 
+<div>
   <%= image_tag "lorax.png", class: 'lorax' %>  
-
+</div>  
 
 
 <!-- <div class="footer">

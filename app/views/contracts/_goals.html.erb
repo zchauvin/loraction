@@ -1,8 +1,7 @@
-<div>
-	<h2>Choose your Goals</h2>
-	<div class='form-field'>
-		<div><%= label_tag "Reduce #{@level.name} to (#{@level.unit})" %></div>
-		<%= number_field_tag @level.name %>	
-	</div>
-	<%= submit_tag 'Next', class: 'btn btn-success' %>
+
+<div class="center narrow table topmargin">
+	<%= text_field_tag @level.name, nil,
+	autofocus: true,
+	placeholder: "Reduce #{@level.task.name} #{@level.name} to (#{@level.unit})",
+	class: 'invis' %>	
 </div>

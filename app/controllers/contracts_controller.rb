@@ -3,6 +3,14 @@ class ContractsController < ApplicationController
 
   def index
     # UserMailer.welcome_email(User.first).deliver
+    
+
+    scheduler = Rufus::Scheduler.new
+
+    scheduler.in '20s' do
+      logger.debug 'Hello... Rufus'
+    end
+
     session[:step] = 0
     if !user_signed_in?
       render 'intro/index.html.erb', layout: "intro_layout"
@@ -11,29 +19,29 @@ class ContractsController < ApplicationController
   	else 
       @contracts = Contract.where(user_id: current_user.id)
     end
-    # if !user_signed_in?
-    #   @user =
-    # else 
+  end
 
-    # end
-      
-
-
+  def column(n) 
+    "col-md-" + (12/n).to_s
   end
 
   def new
     if session[:step] == 0
       @categories = Category.all
+      @column = column(Category.count)
       session[:step] = 1
     elsif session[:step] == 1
 
+      
       @tasks = Category.find(params[:category]).tasks
+      @column = column(@tasks.count)
       session[:step] = 2
 
     elsif session[:step] == 2
       
       task = Task.find(params[:task])
       @levels = task.levels  
+      @column = column(@levels.count)
       session[:step] = 3
 
     elsif session[:step] == 3
@@ -55,8 +63,11 @@ class ContractsController < ApplicationController
       session[:step] = 6
 
     else 
+      level = Level.find(session[:level])
+      ts = Level.time_to_int(level.timescale)
+      date = Date.today + params[:finish_date].to_i * ts
       @contract = Contract.new(
-        finish_date: params[:finish_date], 
+        finish_date: date, 
         initial: session[:initial],
         target: session[:target],
         user_id: current_user.id,
@@ -73,19 +84,6 @@ class ContractsController < ApplicationController
       UserMailer.report_email(current_user, @contract).deliver
       render 'create'
     end
-  end
-
-  def report
-    newReport = Report.create
-    @contract = Contract.find(params[:contract_id])
-    @contract.goals.each do |goal|
-      if params.has_key?(goal.level.name)
-        newReport.report_fields << ReportField.create(value: params[goal.level.name], goal_id: goal.id)
-      end
-    end
-    @contract.reports << newReport
-    @contracts = Contract.where(user_id: current_user.id)
-    render 'index'
   end
 
   def destroy

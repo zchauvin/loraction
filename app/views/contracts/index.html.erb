@@ -1,39 +1,28 @@
 <h1>Your Contracts</h1>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Level</th>
-      <th>Start Date</th>
-      <th>Finish Date</th>
-      <th></th>
-    </tr>
-  </thead>
+<% @contracts.each_with_index do |contract, index| %>
+  <div class='bubble center narrow'>
+    <div class='relative'>
+        <%= link_to image_tag('delete.png'), "/contracts/#{contract.id}", class: 'topright' , method: 'delete', data: { confirm: 'Are you sure?'} %>
+    </div>
+    <h2 class='center'>
+      <%= contract.level.task.name.capitalize + " " + contract.level.name.capitalize %> 
+    </h2>
 
-  <tbody>
-    <% @contracts.each_with_index do |contract, index| %>
-      <tr>   
-        <td><%= contract.level.task.category.name %></td>
-        <td><%= contract.level.name.humanize %></td>
-        <td><%= contract.created_at.strftime("%B %e, %Y")%></td>    
-        <td><%= contract.finish_date.strftime("%B %e, %Y")%></td>
-        
-        <td>
-        	<a class="btn btn-primary" data-toggle="modal" data-target=<%= "#goal#{index}" %>>
-			    	Show Goal
-			    </a>
-          <a class="btn btn-primary" data-toggle="modal" data-target=<%= "#report#{index}" %>>
-            Show Progress
+    <p class='subtext'>Reduce 
+          to <%= contract.target.to_s + " " + contract.level.unit %> 
+          by <%= contract.finish_date.strftime("%B %e, %Y") %>
+          </p>    <div class="relative">
+          <a class="btn btn-primary bottomright" data-toggle="modal" data-target=<%= "#goal#{index}" %>>
+              Show Progress
           </a>
-          <%= link_to 'Delete', "/contracts/#{contract.id}", method: 'delete', class: 'btn btn-primary' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+       
+  </div>
+<% end %>
+ 
 
-<%= link_to 'Make a New Contract!', new_contract_path, class: 'btn btn-success' %>
+<%= link_to 'Make a New Contract!', new_contract_path, class: 'btn btn-success', method: 'get' %>
   <% @contracts.each_with_index do |contract, index| %>
     <%= render partial: "goalmodal", locals: { index: index } %>    
     <%= render partial: "goalmodal", locals: { index: index } %>    

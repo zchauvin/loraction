@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'highcharts-rails'
+gem 'rufus-scheduler'
 gem 'groupdate'
 gem 'chartkick'
 gem 'omniauth-facebook'

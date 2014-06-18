@@ -11,16 +11,21 @@ Task.destroy_all
 Level.destroy_all
 
 water = Category.create(
-	name: 'Water', 
+	name: 'water', 
 	description: 'This is one of the most precious resources on Earth,
 				  and yet humans waste it with reckless abandon. Help 
 				  preserve this gift by taking simple steps to ensure 
 				  that the people of today and the future can have clean,
 				  potable, and accessible water!')
 
-# carbon = Category.create(
-# 	name: 'Carbon',
-# 	description: 'Wasted carbon sucks dude!')
+carbon = Category.create(
+	name: 'carbon',
+	description: 'Wasted carbon sucks dude!')
+
+energy = Category.create(
+	name: 'energy',
+	description: ''
+	)
 
 shower = Task.create(
 	name: 'showering',
@@ -50,25 +55,28 @@ laundry = Task.create(
 				  you can make a huge difference!', 
 	category_id: water.id)
 
-red_meat = Task.create(
-	name: 'red_meat',
-	description: 'Believe it or not, red meat is actually one of the biggest
-				  producers of green house gas! By working to reduce the amount of this 
-				  food that you intake, you can cut your water usage by huge amounts!', 
-	category_id: water.id)
+# red_meat = Task.create(
+# 	name: 'red_meat',
+# 	description: 'Believe it or not, red meat is actually one of the biggest
+# 				  producers of green house gas! By working to reduce the amount of this 
+# 				  food that you intake, you can cut your water usage by huge amounts!', 
+# 	category_id: water.id)
 
 
 s_freq = Level.create(
-	name: 'shower_frequency',
-	unit: 'average times per day, decimal',
+	name: 'frequency',
+	unit: 'average times per week',
+	timescale: 'week', 
 	task_id: shower.id)
 
 length = Level.create(
-	name: 'shower_length',
+	name: 'duration',
 	unit: 'minutes',
+	timescale: 'day', 
 	task_id: shower.id)
 
 l_freq = Level.create(
-	name: 'laundry_frequency',
+	name: 'frequency',
 	unit: 'times per month',
+	timescale: 'month', 
 	task_id: laundry.id)

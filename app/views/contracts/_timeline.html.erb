@@ -1,9 +1,6 @@
-<div>
-	<h2>Specify the Timeline</h2>
-	<div class="form-field">
-		<div><%= label_tag 'Finish Date (mm/dd/yyyy)' %></div>
-		<%= date_field_tag :finish_date %>
-	</div>
-	<%= submit_tag 'Finalize Contract', class: 'btn btn-primary' %>
+<div class="center narrow table topmargin">
+	<%= text_field_tag :finish_date, nil,
+	autofocus: true,
+	placeholder: "Aim to reach your goal in (# of #{@level.timescale}s)",
+	class: 'invis' %>	
 </div>
-

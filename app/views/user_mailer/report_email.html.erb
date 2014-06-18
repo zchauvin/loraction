@@ -1,21 +1,56 @@
 <!DOCTYPE html>
+
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+
+    body {
+      font-family: 'Merriweather Sans', georgia
+    }
+
+    input[type=submit] {
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 0;
+      width: 80px;
+      height:40px;
+      font-size: 1em;
+      background: #ffad3f;
+    }
+
+    input[type=number] {
+      border: 0;
+      width: 150px;
+      height: 34px;
+      border-radius: 5px;
+      padding: 2px;
+      font-size: 1.2em;
+    }
+
+    input[type=submit]:hover {
+     background: #ff9835; 
+    }
+
+</style>
+
+
+
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
+  <body style="background-color:#16B6FA;color:white;">
     <h1>Hey <%= @user.first_name %>, </h1>
-    <p>
-      This url is <%= @url %>
-    </p>
     <p>
       The team at Loraction is rooting for you as you work to reduce your
        <%= @contract.level.task.category.name %> usage! 
     </p>
       <form action= <%= @url %> , method: 'post' >
         <label for=<%= @contract.level.name %>>
-          <%= @contract.level.name %>
+          Please let us know your current <%= @contract.level.name.humanize %> 
+          (<%= @contract.level.unit %>)
         </label>
+        <br>
         <input type="hidden" name='contract' value=<%= @contract.id %>>
         <input type="number" name='value'>
         <input type="submit" value="Submit">

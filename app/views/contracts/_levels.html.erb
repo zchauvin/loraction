@@ -1,11 +1,14 @@
-<div>
-	<h2>Stupendous decisiveness! With that task, what would you like to focus on: </h2>
-	<% @levels.each do |level| %>
-		<div class='form-field'>
-			<div><%= label_tag "#{level.name} (#{level.unit})" %></div>
-			<%= radio_button_tag 'level', level.id %>	
-		</div>
-	<% end %>
-	<%= submit_tag 'Next', class: 'btn btn-success' %>
 
-</div>
+<div class='blockcont'>
+<h2>Stupendous decisiveness! With that task, what would you like to focus on: </h2>
+<% @levels.each do |level| %>
+	<div class=<%= @column %>>
+		<div id=<%= level.id %> class="block">
+			<p class='blocktext'><%= level.name.humanize %></p>
+			<%= image_tag "#{level.name}.png" %>
+			<input type="hidden" name='level' value=''>
+		</div>
+	</div>
+<% end %>
+<div>
+

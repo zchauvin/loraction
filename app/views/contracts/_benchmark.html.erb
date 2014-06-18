@@ -1,11 +1,8 @@
 <!-- STEP 3 -->
 
-<div>
-	<h2>Set a Benchmark</h2>
-	<div class='form-field'>
-		<div><%= label_tag "#{@level.name} (#{@level.unit})" %></div>
-		<%= number_field_tag @level.name %>	
-	</div>
-	<%= submit_tag 'Next', class: 'btn btn-success' %>
-
+<div class='center narrow table topmargin'>
+	<%= text_field_tag @level.name, nil, 
+	autofocus: true, 
+	placeholder: "Current #{@level.task.name} #{@level.name} (#{@level.unit})",
+	class: 'invis' %>
 </div>

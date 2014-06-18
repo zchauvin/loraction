@@ -1,11 +1,16 @@
 <!-- STEP 2 -->
 
-<h1 class='subhead'>An inspired choice! Now select all the tasks that you want to challenge yourself in: </h1>
+<div class='blockcont'>
+<h1 class='subhead'>An inspired choice! Now select the activity you want to challenge yourself in: </h1>
 
 <% @tasks.each do |task| %>
-	<%= label_tag task.name %>
-	<%= radio_button_tag 'task', task.id %>
-	<br>
-
+	
+	<div class=<%= @column %>>
+		<div id=<%= task.id %> class="block">
+			<p class='blocktext'><%= task.name.humanize %></p>
+			<%= image_tag "#{task.name}.png" %>
+			<input type="hidden" name='task' value=''>
+		</div>
+	</div>
 <% end %>
-<%= submit_tag 'Next', class: 'btn btn-success' %>
+<div>x

@@ -1,8 +1,12 @@
 
  @import "bootstrap";
  @import "bootstrap_override";	
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
 
 $intro_font_color: rgb(255, 255, 111);
+$background_color: #16B6FA;
+$lighter_background: #59C2FF;
+$font_color: #eee;
 
 .intro_body {
 	background-image: url('loraxbg.jpg');
@@ -11,15 +15,120 @@ $intro_font_color: rgb(255, 255, 111);
 	background-size: cover;
 }
 
+.bottomright {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+.relative {
+	position: relative;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+.narrow {
+	width: 60%;
+}
+
+.narrower {
+	width: 30%
+}
+
+.bubble {
+	background-color: rgba(223, 228, 252, 0.29);
+	padding: 20px;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
+.invis::-webkit-input-placeholder {
+	color: white;
+	opacity: 0.6;
+}
+
+.subtext {
+	margin-top: 5px;
+}
+
+.topmargin {
+	margin-top: 150px;
+}
+
+.link {
+	font-weight: bold;
+}
+
+.invis {
+	margin-top: 20px;
+	font-weight: bold;
+	width: 100%;
+	outline: none;
+	opacity: 0.6;
+	background: transparent;
+	border: none;
+	color: #fff;
+	font-size: 22px;
+	padding: 2px;
+    text-align: center;
+    border-bottom: 3px solid white; 
+    
+    display: table-cell;
+    vertical-align: middle;
+}
+
 body {
 	margin-top: 20px;
-	background-color: #41beff;	
-	color: #FAE8E4;
-	font: georgia;
+	background-color: $background_color;	
+	color: $font_color;
+	font-family: 'Merriweather Sans', georgia;
+}
+
+.block {
+	margin: 20px;
+	padding: 20px;
+	text-align: center; 
+	margin: 0 auto;
+	border: thick solid $lighter_background;
+	border-radius: 20px;
+	width: 100%;
+	transition: 0.2s;
+	&:hover {
+		cursor: pointer;
+		background-color: #31abf5; 
+	}
+
+}
+
+.facebook {
+	border: none;
+	background: no-repeat url('facebook.png') 0 0;
+	height: 69px;
+	width: 354px;
+	
+}
+
+.full {
+	width: 100%;
+	text-align: right;
+	margin-bottom: 5px;
 }
 
 
 
+.topright {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.fb-surround {
+	height: 69px;
+	width: 354px;
+	border: thin solid black;
+}
 
 .intro_row {
 	text-align: center;
@@ -28,7 +137,20 @@ body {
 .get_started {
 	color: $intro_font_color;
 	background-color: #41beff;
+
+
 }
+
+.get_started:hover {
+	color: $intro_font_color;
+	background: #52a5fd;
+}
+
+/*.table {
+	border: 1px solid black;
+	display: table;
+	height: 500px;
+}*/
 
 .circle {
 	border-radius: 50%; 
@@ -59,7 +181,7 @@ body {
 .lorax {
 	position: fixed;
 	bottom: 0px;
-	right: -110px;
+	right: -80px;
 }
 
 .footer {
@@ -81,8 +203,14 @@ select {
 	color: black;
 }
 
+.blocktext {
+	color: $lighter_background;
+	font-size: 30px;	
+}
+
 .subhead {
 	text-align: center;
+
 }
 
 .header {
