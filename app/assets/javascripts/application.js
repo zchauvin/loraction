@@ -18,10 +18,10 @@
 $(function() {
 	$('.block').click(function() {
 		$('input').val(this.id);
-		//$('form').submit();
-		$('.blockcont').fadeOut();
-		$('.blockcont').html();
-		$('.blockcont').fadeIn();
+		$('form').submit();
+		// $('.blockcont').fadeOut();
+		// $('.blockcont').html();
+		// $('.blockcont').fadeIn();
 
 		// $('.blockcont').html("You clicked on a checkbox.").fadeIn('slow');
 	});
