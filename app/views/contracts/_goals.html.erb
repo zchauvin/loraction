@@ -1,6 +1,6 @@
 
 <div class="center narrow table topmargin">
-	<%= text_field_tag @level.name, nil,
+	<%= text_field_tag :goal, nil,
 	autofocus: true,
 	placeholder: "Reduce #{@level.task.name} #{@level.name} to (#{@level.unit})",
 	class: 'invis' %>	

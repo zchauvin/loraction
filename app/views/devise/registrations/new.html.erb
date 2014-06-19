@@ -29,14 +29,14 @@
   
   <div class='full'>
     <span class='right'>Already have an account? Sign in 
-      <%= link_to "here", new_session_path(resource_name), class: 'link' %>
+      <%= link_to "here", new_session_path(resource_name), class: 'bold' %>
     <span>
   </div>
 
   <div class='full'>
     <span class='right'>Want to sign up with Facebook? Sign up 
       <%- resource_class.omniauth_providers.each do |provider| %>
-       <%= link_to "here", omniauth_authorize_path(resource_name, provider), class: 'link' %><br />
+       <%= link_to "here", omniauth_authorize_path(resource_name, provider), class: 'bold' %><br />
     <span>
   </div>
   

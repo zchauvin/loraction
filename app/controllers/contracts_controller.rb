@@ -4,20 +4,37 @@ class ContractsController < ApplicationController
   def index
     # UserMailer.welcome_email(User.first).deliver
     
-
-    scheduler = Rufus::Scheduler.new
-
-    scheduler.in '20s' do
-      logger.debug 'Hello... Rufus'
-    end
-
+  
     session[:step] = 0
-    if !user_signed_in?
+      if !user_signed_in?
       render 'intro/index.html.erb', layout: "intro_layout"
     elsif current_user.contracts.empty? 
   		redirect_to new_contract_path
   	else 
       @contracts = Contract.where(user_id: current_user.id)
+      @charts = []
+      @averages = []
+      @recents = []
+      @progress = []
+      @contracts.each do |contract| 
+        @charts << line_chart(contract)
+        @averages << Contract.average(contract)
+        @recents << Contract.recent(contract)
+        @progress << get_recent_colour(contract)
+      end
+
+      
+    end
+  end
+
+  def get_recent_colour(contract)
+    avg = Contract.recent(contract)
+    if avg == "-"
+      return "" 
+    elsif avg <= contract.target     
+      return "green"
+    else
+      "red"
     end
   end
 
@@ -25,13 +42,22 @@ class ContractsController < ApplicationController
     "col-md-" + (12/n).to_s
   end
 
+  def check_params 
+    poss = [:category, :task, :level, :benchmark, :goal, :finish_date]
+    found = false
+    params.has_key?(poss[session[:step]-1])
+  end
+
   def new
+    if !check_params
+      session[:step] = 0
+    end
+
     if session[:step] == 0
       @categories = Category.all
       @column = column(Category.count)
       session[:step] = 1
     elsif session[:step] == 1
-
       
       @tasks = Category.find(params[:category]).tasks
       @column = column(@tasks.count)
@@ -46,20 +72,20 @@ class ContractsController < ApplicationController
 
     elsif session[:step] == 3
 
-      @level = Level.find(params[:level])
       session[:level] = params[:level]
+      @level = Level.find(session[:level])
       session[:step] = 4
       
     elsif session[:step] == 4
-      
+
       @level = Level.find(session[:level])
-      session[:initial] = params[@level.name]
+      session[:initial] = params[:benchmark]
       session[:step] = 5
 
     elsif session[:step] == 5
 
       @level = Level.find(session[:level])
-      session[:target] = params[@level.name]
+      session[:target] = params[:goal]
       session[:step] = 6
 
     else 
@@ -97,10 +123,27 @@ class ContractsController < ApplicationController
     redirect_to root_path
   end 
 
+  def line_chart(contract)
 
-  def create
-  end
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('date', 'Date')
+    data_table.new_column('number', 'Goal')
+    data_table.new_column('number', 'Reported')
+    data_table.add_rows(contract.reports.count)
 
-  def show
+    delta = (contract.initial - contract.target).to_f/contract.reports.count
+    # binding.pry
+    contract.reports.each_with_index do |report, index|
+      data_table.set_cell(index, 0, report.created_at.to_date)   
+      data_table.set_cell(index, 1, (contract.initial.to_f - delta * index).round(1))
+      data_table.set_cell(index, 2, report.value)   
+    end
+
+    v_title = contract.level.name.capitalize + " (" + contract.level.unit + ")"  
+
+    opts   = { :width => 550, :height => 240, hAxis: {title: 'Report Date'}, vAxis: {title: v_title} } 
+    @chart = GoogleVisualr::Interactive::LineChart.new(data_table, opts)
+
   end
+  
 end

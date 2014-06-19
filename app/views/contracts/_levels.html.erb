@@ -1,12 +1,13 @@
 
 <div class='blockcont'>
 <h2>Stupendous decisiveness! With that task, what would you like to focus on: </h2>
+			<input type="hidden" name='level' value=''>
 <% @levels.each do |level| %>
 	<div class=<%= @column %>>
 		<div id=<%= level.id %> class="block">
 			<p class='blocktext'><%= level.name.humanize %></p>
 			<%= image_tag "#{level.name}.png" %>
-			<input type="hidden" name='level' value=''>
+
 		</div>
 	</div>
 <% end %>

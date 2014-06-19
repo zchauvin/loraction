@@ -16,14 +16,14 @@
 	
 	  <div class='full'>
 	    <span class='right'>Don't have an account? Sign up 
-	      <%= link_to "here", new_registration_path(resource_name), class: 'link' %>
+	      <%= link_to "here", new_registration_path(resource_name), class: 'bold' %>
 	    <span>
 	  </div>
 	
 	  <div class='full'>
 	    <span class='right'>Want to sign in with Facebook? Sign in 
 	      <%- resource_class.omniauth_providers.each do |provider| %>
-	       <%= link_to "here", omniauth_authorize_path(resource_name, provider), class: 'link' %><br />
+	       <%= link_to "here", omniauth_authorize_path(resource_name, provider), class: 'bold' %><br />
 	      <%- end %>
 	    <span>
 	  </div>

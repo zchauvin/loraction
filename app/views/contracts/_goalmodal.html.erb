@@ -1,3 +1,5 @@
+
+
 <div id=<%= "goal#{index}" %> class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -7,21 +9,10 @@
             due #{@contracts[index].finish_date.strftime("%B %e, %Y")}" %></h4>
       </div>
       <div class="modal-body">
-        <p> 
-          You're doing your best to: 
-        </p>
-        <ol>
-            <li>Reduce <%= @contracts[index].level.name.humanize.downcase %> from <%= @contracts[index].initial %> to <%= @contracts[index].target %> <%= @contracts[index].level.unit %>
-              <ul>
-                <% @contracts[index].reports.each do |report| %>
-                  <li>
-                    <%= "Reported #{report.value} on #{report.created_at.strftime('%B %e, %Y')}" %>
-                  </li>
-              </ul>
-
-            </li>
-          <% end %>
-        </ol>
+        <div class="graphwrapper">
+          <div id=<%= "graph" + index.to_s %>></div>
+          <%= render_chart @charts[index], "graph" + index.to_s %>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal">Dismiss</button>

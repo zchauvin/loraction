@@ -1,7 +1,7 @@
 <!-- STEP 3 -->
 
 <div class='center narrow table topmargin'>
-	<%= text_field_tag @level.name, nil, 
+	<%= text_field_tag :benchmark, nil, 
 	autofocus: true, 
 	placeholder: "Current #{@level.task.name} #{@level.name} (#{@level.unit})",
 	class: 'invis' %>

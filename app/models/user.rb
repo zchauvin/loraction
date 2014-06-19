@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.nickname
+      user.oauth_token = auth.credentials.token
     end
   end
 
@@ -48,6 +49,10 @@ class User < ActiveRecord::Base
         end  
       end
     end
+  end
+
+  def facebook 
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
 
 

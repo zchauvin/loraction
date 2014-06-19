@@ -15,8 +15,17 @@
 //= require bootstrap
 //= require_tree .
 
+var step = 0 
+
 $(function() {
+
 	$('.block').click(function() {
+		$.get("/contracts/new", { step: step }, function(response) {
+		 	$(".blockcontent").html(response);
+		 	step += 1;
+		});
+
+
 		$('input').val(this.id);
 		$('form').submit();
 		// $('.blockcont').fadeOut();
@@ -30,4 +39,12 @@ $(function() {
 		console.log('FORM SUBMITTED');
 	});
 });
+
+// $.post(url, {name: something, status: something}, function(response) {
+// 	response.data //html
+// 	#(somediv).fadeOut('fast', function() {
+// 		#(somediv).html(response.data)
+// 		somediv.fadeIn()
+// 	})
+// })
 

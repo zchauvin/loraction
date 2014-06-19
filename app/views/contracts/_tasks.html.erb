@@ -2,14 +2,14 @@
 
 <div class='blockcont'>
 <h1 class='subhead'>An inspired choice! Now select the activity you want to challenge yourself in: </h1>
-
+			<input type="hidden" name='task' value=''>
 <% @tasks.each do |task| %>
 	
 	<div class=<%= @column %>>
 		<div id=<%= task.id %> class="block">
 			<p class='blocktext'><%= task.name.humanize %></p>
 			<%= image_tag "#{task.name}.png" %>
-			<input type="hidden" name='task' value=''>
+
 		</div>
 	</div>
 <% end %>

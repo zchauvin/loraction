@@ -1,17 +1,16 @@
 <!-- STEP 1 -->
 
-<div class='blocont'>
-	<h1 class='subhead'>How do you want to make a difference?</h1>
-	
-	<% @categories.each do |category| %>
-			
-	<div class=<%= @column %>>
-		<div id=<%= category.id %> class="block">
-			<p class='blocktext'><%= category.name.humanize %></p>
-			<%= image_tag "#{category.name}.png" %>
-			<input type="hidden" name='category' value=''>
-		</div>
-	</div>
+<h1 class='subhead'>How do you want to make a difference?</h1>
+
+<input type="hidden" name='category' value=''>
+
+<% @categories.each do |category| %>
 		
-	<% end %>
+<div class=<%= @column %>>
+	<div id=<%= category.id %> class="block">
+		<p class='blocktext'><%= category.name.humanize %></p>
+		<%= image_tag "#{category.name}.png", class: 'blockimg' %>		
+	</div>
 </div>
+	
+<% end %>

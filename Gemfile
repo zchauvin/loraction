@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-
+gem 'pry'
+gem 'pry-debugger'
 gem 'whenever', require: false
-gem 'highcharts-rails'
-gem 'rufus-scheduler'
 gem 'groupdate'
-gem 'chartkick'
+
+gem "google_visualr", ">= 2.1"
+
 gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 gem 'devise'
@@ -44,7 +45,9 @@ gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'capistrano'
 
+gem 'koala'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

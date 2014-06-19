@@ -14,6 +14,20 @@ $font_color: #eee;
 	height: 100%;
 	background-size: cover;
 }
+/*
+.blockcontent {
+	background-color: black;
+}*/
+
+.graphwrapper {
+	width: 100%;
+	text-align: center;
+}
+
+.graph {
+	margin: 0 auto;
+	
+}
 
 .eighty {
 	width: 80%;
@@ -45,7 +59,6 @@ $font_color: #eee;
 	background-color: rgba(223, 228, 252, 0.29);
 	padding: 20px;
 	border-radius: 20px;
-	margin-bottom: 20px;
 }
 
 .invis::-webkit-input-placeholder {
@@ -57,12 +70,48 @@ $font_color: #eee;
 	margin-top: 5px;
 }
 
+.bottommargin {
+	margin-bottom: 20px;
+}
+
+.subbubble {
+	height: 70px;
+	width: 80px;
+	position: absolute;
+	background-color: rgba(223, 228, 252, 0.29);
+	border-radius: 20px;
+	padding: 12px 10px;
+	text-align: center;
+	top: 0px;
+}
+
+.recent {
+	right: 160px;
+}
+
+.average {
+	right: 250px;
+}
+
+.initial {
+	right: 340px;
+}
+
+
 .topmargin {
 	margin-top: 150px;
 }
 
-.link {
+.bold {
 	font-weight: bold;
+}
+
+.green {
+	color: #7bff92
+}
+
+.red {
+	color: #ff6b5e;
 }
 
 .invis {
@@ -95,16 +144,21 @@ body {
 	padding: 20px;
 	text-align: center; 
 	margin: 0 auto;
-	border: thick solid $lighter_background;
+	border: thick solid black;
 	border-radius: 20px;
 	width: 100%;
-	transition: 0.2s;
+	transition: 0.4s;
+	opacity: 0.6;
 	&:hover {
 		cursor: pointer;
-		background-color: #31abf5; 
+		/*background-color: #009aff;  */
+		opacity: 1; 	
 	}
-
 }
+
+
+
+
 
 .facebook {
 	border: none;
@@ -208,12 +262,13 @@ select {
 }
 
 .blocktext {
-	color: $lighter_background;
+	color: black;
 	font-size: 30px;	
 }
 
 .subhead {
 	text-align: center;
+	margin-bottom: 50px;
 
 }
 

@@ -1,15 +1,26 @@
+$.get("/", function(response) { $(".navbar").html(response) });
+
 <div class='eighty center'>
- 
+
   <h1>Your Contracts</h1>
   <% @contracts.each_with_index do |contract, index| %>
-    <div class='bubble center'>
+    <div class='bubble center bottommargin'>
       <div class='relative'>
           <%= link_to image_tag('delete.png'), "/contracts/#{contract.id}", class: 'topright' , method: 'delete', data: { confirm: 'Are you sure?'} %>
+          <div class="subbubble recent">
+            <span class=<%= @progress[index] %>><%= @recents[index] %></span><br>Recent
+          </div>
+          <div class="subbubble average">
+            <%= @averages[index] %><br>Average
+          </div>
+          <div class="subbubble initial">
+            <%= contract.initial %><br>Initial
+          </div>
+          
       </div>
       <h2 class='center'>
         <%= contract.level.task.name.capitalize + " " + contract.level.name.capitalize %> 
       </h2>
-  
       <p class='subtext'>Reduce 
             to <%= contract.target.to_s + " " + contract.level.unit %> 
             by <%= contract.finish_date.strftime("%B %e, %Y") %>
