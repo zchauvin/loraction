@@ -60,6 +60,9 @@ $(function() {
 
 function formHandler() {
 	$('.contract_form').on('submit', function() {
+		if (!$('.invis').val()) {
+			return false;
+		}
 		console.log('FORM SUBMITTED');
 		value = $('.invis').val();
 		console.log(value);
@@ -69,7 +72,6 @@ function formHandler() {
 				$(".main").html("<div class='loading'>Please wait as the Swomee-Swans work diligently to finalize your request!</div>");
 				$(".main").fadeIn('fast'); 
 			});
-
 		}
 
 		$.get("/contracts/new", { step: step, id: value }, function(response) {

@@ -10,7 +10,7 @@
     <%= @contract.level.task.category.name %> usage! 
     </p>
     <p>
-    You're recent reports have been around <%= @recent + " " + @contract.level.unit %>, which is good progress on reducing from <%= @contract.initial %> to <%= @contract.target %> <%= @contract.level.unit %>. As you continue your goal, remember: 
+    You're recent reports have been around <%= @recent.to_s + " " + @contract.level.unit.to_s %>, which is good progress on reducing from <%= @contract.initial %> to <%= @contract.target %> <%= @contract.level.unit %>. As you continue your goal, remember: 
     </p>
     <div style="
     font-size: 18px;

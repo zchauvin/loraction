@@ -35,7 +35,7 @@
   <%= link_to 'Make a New Contract!', new_contract_path, class: 'btn btn-success', method: 'get' %>
   <% @contracts.each_with_index do |contract, index| %>
   <%= render partial: "goalmodal", locals: { index: index } %>
-  <%= render partial: "goalmodal", locals: { index: index } %>
+ 
   <% end %>
   
 </div>
