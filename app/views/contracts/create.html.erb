@@ -1,11 +1,10 @@
-
 <h1>Congratulations on your new contract! </h1>
 <h4>Unfortunately, not all of us can enact change magically like the Lorax. Focus on these tips to get started: </h4>
 <br>
-<ul>
-	<% @tips.each do |tip| %>
-		<li><%= tip.description %></li>
-	<% end %>
-</ul>
-
+<div class="tipwrap"><% @tips.each do |tip| %>
+	<div class='bubble tip'>
+		<%= tip.description %>
+	</div>
+<% end %></div>
+<br>
 <%= link_to 'View your Contracts', root_path, class: 'btn btn-success' %>

@@ -22,7 +22,6 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
              <li> <%= link_to 'Contracts', root_path %></li>
-             <li><a href="#">News Feed</a></li>
              <li><a href="#"><%= current_user.first_name %></a></li>
              <li> <%= link_to 'New Contract', '/contracts/new' %></li>
              <li> <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %></li>
@@ -33,7 +32,7 @@
 <% end %>
 <br>
 <br>
-<div class="container">
+<div class="container main">
 	
 	
 	

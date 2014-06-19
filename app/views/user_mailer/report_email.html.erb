@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-
-
-
-
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
@@ -10,23 +6,37 @@
   <body style="background-color:#16B6FA;color:white;padding:20px;font-size:18px;">
     <h1>Hey <%= @user.first_name %>, </h1>
     <p>
-      The team at Loraction is rooting for you as you work to reduce your
-       <%= @contract.level.task.category.name %> usage! 
+    The team at Loraction is rooting for you as you work to reduce your
+    <%= @contract.level.task.category.name %> usage! 
     </p>
-      <form action= <%= @url %> , method: 'post' >
-        <label for=<%= @contract.level.name %>>
-          Please let us know your current <%= @contract.level.task.name %> <%= @contract.level.name %> 
-          (<%= @contract.level.unit %>)
-        </label>
-        <br>
-        <input type="hidden" name='contract' value=<%= @contract.id %>>
-        <input type="number" name='value' style="border: 0;
+    <p>
+    You're recent reports have been around <%= @recent + " " + @contract.level.unit %>, which is good progress on reducing from <%= @contract.initial %> to <%= @contract.target %> <%= @contract.level.unit %>. As you continue your goal, remember: 
+    </p>
+    <div style="
+    font-size: 18px;
+    width: 80%;
+    padding: 5px;
+    background-color: rgba(223, 228, 252, 0.29);
+    border-radius: 20px;
+    ">
+    @tip.description
+      
+    </div>
+    
+    <form action= <%= @url %> , method: 'post' >
+      <label for=<%= @contract.level.name %>>
+        Please let us know your current <%= @contract.level.task.name %> <%= @contract.level.name %>
+        (<%= @contract.level.unit %>)
+      </label>
+      <br>
+      <input type="hidden" name='contract' value=<%= @contract.id %>>
+      <input type="number" name='value' style="border: 0;
       width: 150px;
       height: 34px;
       border-radius: 5px;
       padding: 2px;
       font-size: 1.2em;">
-        <input type="submit" value="Submit" style="color: white;
+      <input type="submit" value="Submit" style="color: white;
       cursor: pointer;
       border-radius: 5px;
       border: 0;
@@ -34,9 +44,9 @@
       height:40px;
       font-size: 1em;
       background: #ffad3f;">
-      </form>
-    <p> 
-      
+    </form>
+    <p>
+    
     </p>
     <p style="text-align:right;">Sincerely,<br>The Loraction Team  </p>
   </body>

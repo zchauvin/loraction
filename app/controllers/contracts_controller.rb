@@ -3,7 +3,6 @@ class ContractsController < ApplicationController
 
   def index
     # UserMailer.welcome_email(User.first).deliver
-    
   
     session[:step] = 0
       if !user_signed_in?
@@ -48,50 +47,52 @@ class ContractsController < ApplicationController
     params.has_key?(poss[session[:step]-1])
   end
 
+  # def new
+  #   case params[:step]
+  #   when 1
+  #     # ..
+  #     render 'step_1', layout: false
+  #   end
+
+  # end
+
+  def step_1
+    render 'step_1.html', layout: false
+  end
+
+
   def new
     if !check_params
-      session[:step] = 0
+      session[:step] = 0   
     end
-
-    if session[:step] == 0
-      @categories = Category.all
-      @column = column(Category.count)
-      session[:step] = 1
-    elsif session[:step] == 1
-      
-      @tasks = Category.find(params[:category]).tasks
+    logger.debug "HELLOD"
+    logger.debug params
+    case params[:step].to_i
+    when 1
+      @tasks = Category.find(params[:id]).tasks
       @column = column(@tasks.count)
-      session[:step] = 2
-
-    elsif session[:step] == 2
-      
-      task = Task.find(params[:task])
+      render 'step2', layout: false
+    when 2
+      task = Task.find(params[:id])
       @levels = task.levels  
       @column = column(@levels.count)
-      session[:step] = 3
-
-    elsif session[:step] == 3
-
-      session[:level] = params[:level]
+      render 'step3', layout: false
+    when 3
+      session[:level] = params[:id]
+      @level = Level.find(params[:id])
+      render 'step4', layout: false
+    when 4 
       @level = Level.find(session[:level])
-      session[:step] = 4
-      
-    elsif session[:step] == 4
-
+      session[:initial] = params[:id]
+      render 'step5', layout: false
+    when 5
       @level = Level.find(session[:level])
-      session[:initial] = params[:benchmark]
-      session[:step] = 5
-
-    elsif session[:step] == 5
-
-      @level = Level.find(session[:level])
-      session[:target] = params[:goal]
-      session[:step] = 6
-
-    else 
+      session[:target] = params[:id]
+      render 'step6', layout: false
+    when 6
       level = Level.find(session[:level])
       ts = Level.time_to_int(level.timescale)
-      date = Date.today + params[:finish_date].to_i * ts
+      date = Date.today + params[:id].to_i * ts
       @contract = Contract.new(
         finish_date: date, 
         initial: session[:initial],
@@ -108,7 +109,11 @@ class ContractsController < ApplicationController
         flash[:error] = @contract.errors.full_messages.join(" | ")
       end
       UserMailer.report_email(current_user, @contract).deliver
-      render 'create'
+      render 'create', layout: false
+    else 
+      @categories = Category.all
+      @column = column(Category.count)
+      render 'step1', layout: true
     end
   end
 
@@ -123,6 +128,12 @@ class ContractsController < ApplicationController
     redirect_to root_path
   end 
 
+  def show
+    @contract = Contract.find(params[:id])
+    @recent = Contract.recent(@contract)
+    render 'show', layout: false
+  end
+
   def line_chart(contract)
 
     data_table = GoogleVisualr::DataTable.new
@@ -132,6 +143,8 @@ class ContractsController < ApplicationController
     data_table.add_rows(contract.reports.count)
 
     delta = (contract.initial - contract.target).to_f/contract.reports.count
+    
+
     # binding.pry
     contract.reports.each_with_index do |report, index|
       data_table.set_cell(index, 0, report.created_at.to_date)   

@@ -1,16 +1,13 @@
 <!-- STEP 1 -->
-
 <h1 class='subhead'>How do you want to make a difference?</h1>
-
 <input type="hidden" name='category' value=''>
-
 <% @categories.each do |category| %>
-		
+
 <div class=<%= @column %>>
 	<div id=<%= category.id %> class="block">
 		<p class='blocktext'><%= category.name.humanize %></p>
-		<%= image_tag "#{category.name}.png", class: 'blockimg' %>		
+		<%= image_tag "#{category.name}.png", class: 'blockimg' %>
 	</div>
 </div>
-	
+
 <% end %>

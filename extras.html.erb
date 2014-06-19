@@ -28,3 +28,22 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
+
+arr = [8,9,10]
+0.upto(2) do |i|
+  report = Report.find(arr[i])
+  report.update_attributes(created_at: (Time.now + i.day))
+end
+
+
+
+Report.destroy_all
+
+
+contract = Contract.find(24)
+
+0.upto(3) do |i|
+  report = Report.create(value: (rand(5) + 5))
+    report.update_attributes(created_at: (Time.now + i.day))
+  contract.reports << report
+end

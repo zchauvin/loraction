@@ -19,26 +19,111 @@ var step = 0
 
 $(function() {
 
-	$('.block').click(function() {
-		$.get("/contracts/new", { step: step }, function(response) {
-		 	$(".blockcontent").html(response);
-		 	step += 1;
-		});
+	window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1428069504133910',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
 
+        $('.fb').click( function() {
+			console.log(this.id.substring(2));	
+        	var id = this.id.substring(2);
+			$.get('contracts/show', {id: id}, function(response) {
+				FB.ui({method: 'apprequests',
+			        message: response
+			    });	
+			})
 
-		$('input').val(this.id);
-		$('form').submit();
-		// $('.blockcont').fadeOut();
-		// $('.blockcont').html();
-		// $('.blockcont').fadeIn();
-
-		// $('.blockcont').html("You clicked on a checkbox.").fadeIn('slow');
+			
 	});
 
-	$('form').on('submit', function() {
-		console.log('FORM SUBMITTED');
-	});
+
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+	handleClick();
+	formHandler(); 
 });
+
+
+function formHandler() {
+	$('.contract_form').on('submit', function() {
+		console.log('FORM SUBMITTED');
+		value = $('.invis').val();
+		console.log(value);
+		step += 1;
+		if (step == 6) {
+			$(".main").fadeOut('fast', function() {
+				$(".main").html("<div class='loading'>Please wait as the Swomee-Swans work diligently to finalize your request!</div>");
+				$(".main").fadeIn('fast'); 
+			});
+
+		}
+
+		$.get("/contracts/new", { step: step, id: value }, function(response) {
+			 	// console.log(response);
+			 	console.log(this.url);
+			 	console.log('step: ' + step)
+			 	$(".main").fadeOut('fast', function(){
+			 		$(".main").html(response);
+			 		handleClick();
+			 		formHandler();
+			 		$(".main").fadeIn('fast', function(){
+			 			if (step > 2) {
+			 				$('.invis').focus();
+			 			}
+			 		});
+
+			 	});
+		});
+		return false;
+	});
+}	
+
+	
+
+function handleClick() {  
+	$('.block').click(function() {
+			
+			console.log('clicked');
+			console.log(this.id);
+			step += 1;
+			$.get("/contracts/new", { step: step, id: this.id }, function(response) {
+			 	// console.log(response);
+			 	console.log(this.url);
+			 	console.log('step: ' + step)
+			 	$(".main").fadeOut('fast', function(){
+			 		$(".main").html(response);
+			 		handleClick();
+			 		formHandler();
+			 		$(".main").fadeIn('fast', function(){
+			 			if (step > 2) {
+			 				$('.invis').focus();
+			 			}
+			 		});
+			 	});
+			});
+			// $('input').val(this.id);
+			// $('form').submit();
+			// // $('.blockcont').fadeOut();
+			// $('.blockcont').html();
+			// $('.blockcont').fadeIn();
+
+			// $('.blockcont').html("You clicked on a checkbox.").fadeIn('slow');
+	});
+}
 
 // $.post(url, {name: something, status: something}, function(response) {
 // 	response.data //html

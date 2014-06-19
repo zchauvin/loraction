@@ -132,6 +132,19 @@ $font_color: #eee;
     vertical-align: middle;
 }
 
+.fb {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: 0.2s;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+
 body {
 	margin-top: 20px;
 	background-color: $background_color;	
@@ -139,7 +152,18 @@ body {
 	font-family: 'Merriweather Sans', georgia;
 }
 
+.loading {
+	margin: 150px auto;
+	text-align: center; 
+	font-size: 30px;
+	border-radius: 20px;
+	background-color: rgba(223, 228, 252, 0.29);
+	padding: 20px;
+	border-radius: 20px;
+}
+
 .block {
+	background-color: $font_color;
 	margin: 20px;
 	padding: 20px;
 	text-align: center; 
@@ -148,10 +172,10 @@ body {
 	border-radius: 20px;
 	width: 100%;
 	transition: 0.4s;
-	opacity: 0.6;
+	/*opacity: 0.6;*/
 	&:hover {
 		cursor: pointer;
-		/*background-color: #009aff;  */
+		background-color: #B0E2FF;  
 		opacity: 1; 	
 	}
 }
@@ -178,8 +202,8 @@ body {
 
 .topright {
 	position: absolute;
-	top: 0px;
-	right: 0px;
+	top: 3px;
+	right: 38px;
 }
 
 .fb-surround {
@@ -264,6 +288,16 @@ select {
 .blocktext {
 	color: black;
 	font-size: 30px;	
+}
+
+.tip {
+	font-size: 22px;
+	width: 70%;
+	margin: 10px auto;
+}
+
+.tipwrap {
+	text-align: center;
 }
 
 .subhead {

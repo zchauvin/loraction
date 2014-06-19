@@ -7,7 +7,10 @@ class UserMailer < ActionMailer::Base
   end
 
   def report_email(user, contract)
-  	@user = user
+  	@recent = 8.3
+    r = rand(contract.level.tips.count)
+    @tip = contract.level.tips[r]
+    @user = user
   	@url = 'http://agile-savannah-3773.herokuapp.com/reports'
   	@contract = contract
   	mail(to: @user.email, 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'categories' => 'categories#index'
   get 'intro' => 'intro#index', as: 'intro' 
-  
+  get 'contracts/show' => 'contracts#show'  
 
   get 'contracts/new' => 'contracts#new', as: 'new_contract'
   get 'contracts' => 'contracts#create'
