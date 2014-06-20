@@ -7,21 +7,29 @@
     <h1>Hey <%= @user.first_name %>, </h1>
     <p>
     The team at Loraction is rooting for you as you work to reduce your
-    <%= @contract.level.task.category.name %> usage! 
+    <%= @contract.level.task.category.name %> usage!
     </p>
     <p>
-    You're recent reports have been around <%= @recent.to_s + " " + @contract.level.unit.to_s %>, which is good progress on reducing from <%= @contract.initial %> to <%= @contract.target %> <%= @contract.level.unit %>. As you continue your goal, remember: 
+    Your recent reports have been around <%= @recent.to_s + " " + @contract.level.unit.to_s %>, which is good progress on reducing your current <%= @contract.level.task.name %> <%= @contract.level.name %> from <%= @contract.initial %> to <%= @contract.target %> <%= @contract.level.unit %>.
+    <% if @tip %>
+    As you continue to improve, remember:
+    <% end %>
     </p>
+    <% if @tip %>
     <div style="
-    font-size: 18px;
-    width: 80%;
-    padding: 5px;
-    background-color: rgba(223, 228, 252, 0.29);
-    border-radius: 20px;
-    ">
-    @tip.description
+      font-size: 18px;
+      width: 80%;
+      padding: 10px;
+      background-color: rgba(223, 228, 252, 0.29);
+      border-radius: 20px;
+      margin: 0px auto;
+      ">
       
+      <%= @tip.description %>
     </div>
+    <% end %>
+    
+    <br>
     
     <form action= <%= @url %> , method: 'post' >
       <label for=<%= @contract.level.name %>>

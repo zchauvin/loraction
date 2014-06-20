@@ -4,6 +4,24 @@ $intro_font_color: rgb(255, 255, 111);
 	color: black;
 }
 
+@font-face {
+  font-family: 'Grinched';
+  src: url('GrinchedRegular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.navbar-brand {
+	font-family: 'Grinched';
+	font-size: 30px;
+	margin: 3px 0 0 0;
+	a {
+		color: #e87729;	
+	}
+	
+}
+
 
 .jumbotron {
 	color: $intro_font_color;

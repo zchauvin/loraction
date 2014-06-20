@@ -40,10 +40,21 @@ end
 Report.destroy_all
 
 
-contract = Contract.find(24)
+contract = Contract.find(42)
 
-0.upto(3) do |i|
-  report = Report.create(value: (rand(5) + 5))
+0.upto(4) do |i|
+  report = Report.create(value: (rand(3) + 5 - i))
     report.update_attributes(created_at: (Time.now + i.day))
   contract.reports << report
 end
+
+
+contract = Contract.find(44)
+
+0.upto(4) do |i|
+  report = Report.create(value: (rand(3) + 5))
+    report.update_attributes(created_at: (Time.now + i.day))
+  contract.reports << report
+end
+
+

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'intro' => 'intro#index', as: 'intro' 
   get 'contracts/show' => 'contracts#show'  
 
+  get '/users/:id' => 'users#show'
+
   get 'contracts/new' => 'contracts#new', as: 'new_contract'
   get 'contracts' => 'contracts#create'
   post '/' => 'contracts#report'
